@@ -32,7 +32,8 @@ class RegisterController extends Controller
     protected function registered()
     {
         $this->guard()->logout();
-        return redirect('/do_login')->with('status', 'We sent you an activation code. Check your email and click on the link to verify.');
+//        return redirect('/do_login')->with('status', 'We sent you an activation code. Check your email and click on the link to verify.');
+        return redirect('/do_login');
     }
 
     use RegistersUsers;
@@ -89,7 +90,7 @@ class RegisterController extends Controller
             'token' => str_random(40)
         ]);
 
-        Mail::to($user->email)->send(new VerifyMail($user));
+//        Mail::to($user->email)->send(new VerifyMail($user));
 
         return $user;
     }
